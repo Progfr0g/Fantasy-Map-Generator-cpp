@@ -214,20 +214,20 @@ let svgWidth = graphWidth;
 let svgHeight = graphHeight;
 
 landmass.append("rect").attr("x", 0).attr("y", 0).attr("width", graphWidth).attr("height", graphHeight);
-oceanPattern
-  .append("rect")
-  .attr("fill", "url(#oceanic)")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("width", graphWidth)
-  .attr("height", graphHeight);
-oceanLayers
-  .append("rect")
-  .attr("id", "oceanBase")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("width", graphWidth)
-  .attr("height", graphHeight);
+// oceanPattern
+//   .append("rect")
+//   .attr("fill", "#000")
+//   .attr("x", 0)
+//   .attr("y", 0)
+//   .attr("width", graphWidth)
+//   .attr("height", graphHeight);
+// oceanLayers
+//   .append("rect")
+//   .attr("id", "oceanBase")
+//   .attr("x", 0)
+//   .attr("y", 0)
+//   .attr("width", graphWidth)
+//   .attr("height", graphHeight);
 
 document.addEventListener("DOMContentLoaded", async () => {
   if (!location.hostname) {
@@ -270,7 +270,7 @@ async function checkLoadParameters() {
   const url = new URL(window.location.href);
   const params = url.searchParams;
 
-  // of there is a valid maplink, try to load .map/.gz file from URL
+  // if there is a valid maplink, try to load .map/.gz file from URL
   if (params.get("maplink")) {
     WARN && console.warn("Load map from URL");
     const maplink = params.get("maplink");
@@ -547,8 +547,8 @@ async function renderGroupCOAs(g) {
     g.id === "burgEmblems"
       ? [pack.burgs, "burg"]
       : g.id === "provinceEmblems"
-      ? [pack.provinces, "province"]
-      : [pack.states, "state"];
+        ? [pack.provinces, "province"]
+        : [pack.states, "state"];
   for (let use of g.children) {
     const i = +use.dataset.i;
     const id = type + "COA" + i;
@@ -623,49 +623,49 @@ async function generate(options) {
     pack = {}; // reset pack
 
     markFeatures();
-    markupGridOcean();
-    addLakesInDeepDepressions();
-    openNearSeaLakes();
+    // markupGridOcean();
+    // addLakesInDeepDepressions();
+    // openNearSeaLakes();
 
-    OceanLayers();
+    // OceanLayers();
     defineMapSize();
     calculateMapCoordinates();
-    calculateTemperatures();
-    generatePrecipitation();
+    // calculateTemperatures();
+    // generatePrecipitation();
 
     reGraph();
-    drawCoastline();
+    // drawCoastline();
 
-    Rivers.generate();
-    drawRivers();
-    Lakes.defineGroup();
-    Biomes.define();
+    // Rivers.generate();
+    // drawRivers();
+    // Lakes.defineGroup();
+    // Biomes.define();
 
-    rankCells();
-    Cultures.generate();
-    Cultures.expand();
-    BurgsAndStates.generate();
-    Religions.generate();
-    BurgsAndStates.defineStateForms();
-    BurgsAndStates.generateProvinces();
-    BurgsAndStates.defineBurgFeatures();
+    // rankCells();
+    // Cultures.generate();
+    // Cultures.expand();
+    // BurgsAndStates.generate();
+    // Religions.generate();
+    // BurgsAndStates.defineStateForms();
+    // BurgsAndStates.generateProvinces();
+    // BurgsAndStates.defineBurgFeatures();
 
-    drawStates();
-    drawBorders();
-    drawStateLabels();
+    // drawStates();
+    // drawBorders();
+    // drawStateLabels();
 
-    Rivers.specify();
-    Lakes.generateName();
+    // Rivers.specify();
+    // Lakes.generateName();
 
-    Military.generate();
-    Markers.generate();
-    addZones();
+    // Military.generate();
+    // Markers.generate();
+    // addZones();
 
     drawScaleBar(scale);
     Names.getMapName();
 
     WARN && console.warn(`TOTAL: ${rn((performance.now() - timeStart) / 1000, 2)}s`);
-    showStatistics();
+    // showStatistics();
     INFO && console.groupEnd("Generated Map " + seed);
   } catch (error) {
     ERROR && console.error(error);

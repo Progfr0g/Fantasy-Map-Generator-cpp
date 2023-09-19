@@ -261,14 +261,14 @@ function selectStyleElement() {
     styleFontSize.value = el.attr("data-size");
   }
 
-  if (sel === "ocean") {
-    styleOcean.style.display = "block";
-    styleOceanFill.value = styleOceanFillOutput.value = oceanLayers.select("#oceanBase").attr("fill");
-    styleOceanPattern.value = document.getElementById("oceanicPattern")?.getAttribute("href");
-    styleOceanPatternOpacity.value = styleOceanPatternOpacityOutput.value =
-      document.getElementById("oceanicPattern").getAttribute("opacity") || 1;
-    outlineLayers.value = oceanLayers.attr("layers");
-  }
+  // if (sel === "ocean") {
+  //   styleOcean.style.display = "block";
+  //   styleOceanFill.value = styleOceanFillOutput.value = oceanLayers.select("#oceanBase").attr("fill");
+  //   styleOceanPattern.value = document.getElementById("oceanicPattern")?.getAttribute("href");
+  //   styleOceanPatternOpacity.value = styleOceanPatternOpacityOutput.value =
+  //     document.getElementById("oceanicPattern").getAttribute("opacity") || 1;
+  //   outlineLayers.value = oceanLayers.attr("layers");
+  // }
 
   if (sel === "temperature") {
     styleStrokeWidth.style.display = "block";
